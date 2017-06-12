@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="stock-entity" />
+        <module name="stock-trim" />
+        <module name="stock-website" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="stock" target="1.5" />
+      <module name="stock-entity" target="1.5" />
+      <module name="stock-trim" target="1.5" />
+      <module name="stock-website" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
