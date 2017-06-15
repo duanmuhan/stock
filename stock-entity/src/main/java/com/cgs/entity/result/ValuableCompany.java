@@ -4,6 +4,7 @@ public class ValuableCompany {
 
   private int stockId;
   private String companyName;
+  private String level;
 
   public int getStockId() {
     return stockId;
@@ -19,5 +20,13 @@ public class ValuableCompany {
 
   public void setCompanyName(String companyName) {
     this.companyName = companyName;
+  }
+
+  public String getLevel() {
+    return level;
+  }
+
+  public void setLevel(String level) {
+    this.level = level;
   }
 }

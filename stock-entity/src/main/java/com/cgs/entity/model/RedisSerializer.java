@@ -1,5 +1,8 @@
 package com.cgs.entity.model;
 
-public interface RedisSerializer<T> {
+public interface RedisSerializer<T,V> {
 
+  V toRedisValue();
+
+  T parseFromRedis(V string);
 }

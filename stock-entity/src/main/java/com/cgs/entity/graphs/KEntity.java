@@ -1,11 +1,15 @@
 package com.cgs.entity.graphs;
 
 import com.cgs.entity.constant.KPeriod;
+import com.cgs.entity.model.AMQPSerializer;
+import com.cgs.entity.model.RedisSerializer;
 
 /**
  * Created by Administrator on 2017/6/8.
  */
-public class KEntity {
+public class KEntity implements RedisSerializer<KEntity,String>,AMQPSerializer<String> {
+
+    private static final String FIELD_SEPERATOR = ",";
 
     private KPeriod period;
     private int stockId;
@@ -69,5 +73,25 @@ public class KEntity {
 
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String toRedisValue(){
+        return this.getStockId() + FIELD_SEPERATOR + this.getHigh() + FIELD_SEPERATOR + this.getLow() + FIELD_SEPERATOR
+            + this.getOpen() + FIELD_SEPERATOR + this.getClose() + FIELD_SEPERATOR + this.getTimestamp();
+    }
+
+    public KEntity parseFromRedis(String value){
+        KEntity entity = new KEntity();
+        return entity;
+    }
+
+    @Override
+    public String toMessage() {
+        return null;
+    }
+
+    @Override
+    public String parseFromMessage(String string) {
+        return null;
     }
 }

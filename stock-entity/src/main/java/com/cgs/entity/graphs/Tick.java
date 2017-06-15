@@ -41,4 +41,5 @@ public class Tick {
   public void setTimestamp(long timestamp) {
     this.timestamp = timestamp;
   }
+
 }
