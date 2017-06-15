@@ -7,6 +7,10 @@ public class EMA {
   private double priceYesterday;
   private double priceToday;
 
+  public static int getN() {
+    return N;
+  }
+
   public double getA() {
     return a;
   }

@@ -12,10 +12,10 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="stock" target="1.5" />
-      <module name="stock-entity" target="1.5" />
-      <module name="stock-trim" target="1.5" />
-      <module name="stock-website" target="1.5" />
+      <module name="stock" target="1.8" />
+      <module name="stock-entity" target="1.8" />
+      <module name="stock-trim" target="1.8" />
+      <module name="stock-website" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
