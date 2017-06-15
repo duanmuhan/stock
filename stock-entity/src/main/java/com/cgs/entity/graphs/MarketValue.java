@@ -5,4 +5,8 @@ package com.cgs.entity.graphs;
  */
 public class MarketValue {
 
+  private int stockId;
+  private long newvol;
+  private double bid;
+
 }
