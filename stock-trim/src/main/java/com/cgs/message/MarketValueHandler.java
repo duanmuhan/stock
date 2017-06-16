@@ -1,17 +1,17 @@
 package com.cgs.message;
 
+import com.cgs.entity.graphs.MarketValue;
 import com.cgs.service.graphs.KService;
 import com.cgs.service.graphs.MarketValueService;
 import com.cgs.service.graphs.TickService;
 import com.cgs.service.graphs.TrendService;
+import javax.jms.Message;
+import javax.jms.MessageListener;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.Message;
-import org.springframework.messaging.MessageHandler;
-import org.springframework.messaging.MessagingException;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MarketValueHandler implements MessageHandler {
+public class MarketValueHandler implements MessageListener {
 
   @Autowired
   KService kService;
@@ -22,8 +22,13 @@ public class MarketValueHandler implements MessageHandler {
   @Autowired
   TrendService trendService;
 
-  @Override
-  public void handleMessage(Message<?> message) throws MessagingException {
 
+  @Override
+  public void onMessage(Message message) {
+    MarketValue marketValue = new MarketValue();
+    kService.handle(marketValue);
+    marketValueService.handle(marketValue);
+    tickService.handle(marketValue);
+    trendService.handle(marketValue);
   }
 }
