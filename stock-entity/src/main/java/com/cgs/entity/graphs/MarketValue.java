@@ -9,4 +9,6 @@ public class MarketValue {
   private long newvol;
   private double bid;
 
+  private long timestamp;
+
 }
