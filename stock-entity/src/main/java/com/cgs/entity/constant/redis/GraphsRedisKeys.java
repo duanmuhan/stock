@@ -1,7 +1,7 @@
-package com.cgs.entity.constant;
+package com.cgs.entity.constant.redis;
 
 import com.cgs.entity.graphs.KEntity;
-import com.cgs.entity.graphs.MarketValue;
+import com.cgs.entity.graphs.MarketPrice;
 import com.cgs.entity.graphs.Tick;
 import com.cgs.entity.graphs.TrendMin;
 
@@ -21,9 +21,8 @@ public class GraphsRedisKeys {
     return TREND_PREFIX + trendMin.getTrendPeriod().name() + ":" + trendMin.getStockId();
   }
 
-  //TODO 这个地方需要确认实体类型
-  public static String marketValueKey(MarketValue marketValue){
-    return MARKET_PREFIX;
+  public static String marketValueKey(MarketPrice marketPrice){
+    return MARKET_PREFIX + marketPrice.getStockId();
   }
 
   public static String tickKey(Tick tick){

@@ -1,4 +1,4 @@
-package com.cgs.entity.constant;
+package com.cgs.entity.constant.redis;
 
 public class TechRedisKeys {
 

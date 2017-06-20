@@ -1,4 +1,4 @@
-package com.cgs.entity.result;
+package com.cgs.entity.base;
 
 public class ValuableCompany {
 
