@@ -1,7 +1,7 @@
 package com.cgs.service.graphs.interfaces;
 
-import com.cgs.entity.graphs.MarketValue;
+import com.cgs.entity.graphs.MarketPrice;
 
 public interface IHandler {
-   void handle(MarketValue marketValue);
+   void handle(MarketPrice marketPrice);
 }

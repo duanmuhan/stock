@@ -3,7 +3,7 @@ package com.cgs.cache;
 import com.cgs.dao.KDao;
 import com.cgs.entity.constant.KPeriod;
 import com.cgs.entity.graphs.KEntity;
-import com.cgs.entity.graphs.MarketValue;
+import com.cgs.entity.graphs.MarketPrice;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class KCache {
   @Autowired
   private KDao dao;
 
-  public void put(MarketValue marketValue){
+  public void put(MarketPrice marketValue){
 
   }
 
