@@ -1,6 +1,6 @@
 package com.cgs.message;
 
-import com.cgs.entity.graphs.MarketValue;
+import com.cgs.entity.graphs.MarketPrice;
 import com.cgs.service.graphs.KService;
 import com.cgs.service.graphs.MarketValueService;
 import com.cgs.service.graphs.TickService;
@@ -22,13 +22,12 @@ public class MarketValueHandler implements MessageListener {
   @Autowired
   TrendService trendService;
 
-
   @Override
   public void onMessage(Message message) {
-    MarketValue marketValue = new MarketValue();
-    kService.handle(marketValue);
-    marketValueService.handle(marketValue);
-    tickService.handle(marketValue);
-    trendService.handle(marketValue);
+    MarketPrice marketPrice = new MarketPrice();
+    kService.handle(marketPrice);
+    marketValueService.handle(marketPrice);
+    tickService.handle(marketPrice);
+    trendService.handle(marketPrice);
   }
 }
