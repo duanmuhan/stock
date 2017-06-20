@@ -4,9 +4,9 @@ import com.cgs.entity.constant.redis.GraphsRedisKeys;
 import com.cgs.entity.graphs.MarketPrice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 public class MarketPriceDao {
 
   @Autowired
