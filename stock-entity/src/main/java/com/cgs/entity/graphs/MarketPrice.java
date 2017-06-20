@@ -1,12 +1,16 @@
 package com.cgs.entity.graphs;
 
+import com.cgs.entity.model.AMQPSerializer;
+import com.cgs.entity.model.RedisSerializer;
+
 /**
  * Created by Administrator on 2017/6/10.
  */
-public class MarketPrice {
+public class MarketPrice implements RedisSerializer<MarketPrice,String>,AMQPSerializer<String> {
+
+  private static final String FIELD_SEPERATOR = ",";
 
   private int stockId;
-  private long newvol;
   private double open;
   private double close;
   private double high;
@@ -21,14 +25,6 @@ public class MarketPrice {
 
   public void setStockId(int stockId) {
     this.stockId = stockId;
-  }
-
-  public long getNewvol() {
-    return newvol;
-  }
-
-  public void setNewvol(long newvol) {
-    this.newvol = newvol;
   }
 
   public double getOpen() {
@@ -85,5 +81,33 @@ public class MarketPrice {
 
   public void setTimestamp(long timestamp) {
     this.timestamp = timestamp;
+  }
+
+  public String toRedisValue(){
+    StringBuilder sb = new StringBuilder();
+    sb.append(this.getStockId()).append(FIELD_SEPERATOR);
+    sb.append(this.getOpen()).append(FIELD_SEPERATOR);
+    sb.append(this.getClose()).append(FIELD_SEPERATOR);
+    sb.append(this.getHigh()).append(FIELD_SEPERATOR);
+    sb.append(this.getLow()).append(FIELD_SEPERATOR);
+    sb.append(this.getVol()).append(FIELD_SEPERATOR);
+    sb.append(this.getVolume()).append(FIELD_SEPERATOR);
+    sb.append(this.getTimestamp()).append(FIELD_SEPERATOR);
+    return sb.toString();
+  }
+
+  @Override
+  public MarketPrice parseFromRedis(String string) {
+    return null;
+  }
+
+  @Override
+  public String toMessage() {
+    return null;
+  }
+
+  @Override
+  public String parseFromMessage(String string) {
+    return null;
   }
 }

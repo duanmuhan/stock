@@ -1,11 +1,13 @@
 package com.cgs.entity.graphs;
 
 import com.cgs.entity.constant.TrendPeriod;
+import com.cgs.entity.model.AMQPSerializer;
+import com.cgs.entity.model.RedisSerializer;
 
 /**
  * Created by Administrator on 2017/6/10.
  */
-public class TrendMin {
+public class TrendMin implements RedisSerializer<TrendMin,String>,AMQPSerializer<String> {
 
   private TrendPeriod trendPeriod;
   private int stockId;
@@ -60,5 +62,25 @@ public class TrendMin {
 
   public void setTime(long time) {
     this.time = time;
+  }
+
+  @Override
+  public String toRedisValue() {
+    return null;
+  }
+
+  @Override
+  public TrendMin parseFromRedis(String string) {
+    return null;
+  }
+
+  @Override
+  public String toMessage() {
+    return null;
+  }
+
+  @Override
+  public String parseFromMessage(String string) {
+    return null;
   }
 }
