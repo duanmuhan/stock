@@ -30,4 +30,5 @@ public class MarketValueHandler implements MessageListener {
     tickService.handle(marketPrice);
     trendService.handle(marketPrice);
   }
+
 }
