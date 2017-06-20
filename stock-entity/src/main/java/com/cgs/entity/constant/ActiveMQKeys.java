@@ -3,7 +3,16 @@ package com.cgs.entity.constant;
 public enum ActiveMQKeys {
 
   MARKET_VALUE("marketValue"),
-  K("k");
+  TREND("trendMin"),
+  TICK("tick"),
+  KMIN("kMin"),
+  KFIVEMIN("kFiveMin"),
+  KFIFTEENMIN("kFifteenMin"),
+  KHALFHOUR("kHalfHour"),
+  KHOUR("kHour"),
+  KDAY("kDay"),
+  KMONTH("kMonth"),
+  KYEAR("kYear");
 
   private String context;
 

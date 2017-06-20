@@ -29,4 +29,9 @@ public class GraphsRedisKeys {
   public static String tickKey(Tick tick){
     return TICK_PREFIX + tick.getStockId();
   }
+
+  public static String kKey(KEntity kEntity){
+    return K_PREFIX + kEntity.getPeriod().name();
+  }
+
 }
