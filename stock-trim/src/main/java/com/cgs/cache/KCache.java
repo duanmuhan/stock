@@ -4,10 +4,11 @@ import com.cgs.dao.KDao;
 import com.cgs.entity.constant.KPeriod;
 import com.cgs.entity.graphs.KEntity;
 import com.cgs.entity.graphs.MarketPrice;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 public class KCache {
@@ -20,7 +21,4 @@ public class KCache {
 
   }
 
-  private void persistent(){
-
-  }
 }

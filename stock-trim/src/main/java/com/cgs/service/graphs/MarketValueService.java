@@ -17,6 +17,9 @@ public class MarketValueService implements IHandler{
 
   @Override
   public void handle(MarketPrice marketPrice) {
-
+    if (!marketValueCache.exists(marketPrice) && !marketValueCache.get(marketPrice).equals(marketPrice.toRedisValue())){
+      marketValueCache.put(marketPrice);
+      marketPriceDao.add(marketPrice);
+    }
   }
 }
