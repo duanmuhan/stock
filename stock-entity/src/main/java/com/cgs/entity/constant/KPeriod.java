@@ -21,6 +21,10 @@ public enum KPeriod {
         this.value = value;
     }
 
+    public String getValue(){
+        return this.value;
+    }
+
     public KPeriod parseFromInteger(int value){
         switch (value){
             case 0:

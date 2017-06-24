@@ -11,6 +11,10 @@ public enum TrendPeriod {
     this.value = value;
   }
 
+  public String getValue(){
+    return this.value;
+  }
+
   public TrendPeriod parseFromInteger(int value){
     switch (value){
       case 0:

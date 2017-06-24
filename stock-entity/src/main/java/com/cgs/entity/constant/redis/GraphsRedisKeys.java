@@ -14,11 +14,11 @@ public class GraphsRedisKeys {
   private static final String MARKET_PREFIX = GRAPHS_PREFIX + "marketprice:";
 
   public static String kDataKey(KEntity kEntity){
-    return K_PREFIX + kEntity.getPeriod().name() + ":" + kEntity.getStockId();
+    return K_PREFIX + kEntity.getPeriod().getValue() + ":" + kEntity.getStockId();
   }
 
   public static String trendKey(TrendMin trendMin){
-    return TREND_PREFIX + trendMin.getTrendPeriod().name() + ":" + trendMin.getStockId();
+    return TREND_PREFIX + trendMin.getTrendPeriod().getValue() + ":" + trendMin.getStockId();
   }
 
   public static String marketValueKey(MarketPrice marketPrice){
@@ -28,9 +28,4 @@ public class GraphsRedisKeys {
   public static String tickKey(Tick tick){
     return TICK_PREFIX + tick.getStockId();
   }
-
-  public static String kKey(KEntity kEntity){
-    return K_PREFIX + kEntity.getPeriod().name();
-  }
-
 }

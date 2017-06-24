@@ -101,7 +101,7 @@ public class MarketPrice implements RedisSerializer<MarketPrice,String>,AMQPSeri
     sb.append(this.getLow()).append(FIELD_SEPERATOR);
     sb.append(this.getVol()).append(FIELD_SEPERATOR);
     sb.append(this.getVolume()).append(FIELD_SEPERATOR);
-    sb.append(this.getTimestamp()).append(FIELD_SEPERATOR);
+    sb.append(this.getTimestamp());
     return sb.toString();
   }
 
@@ -134,7 +134,7 @@ public class MarketPrice implements RedisSerializer<MarketPrice,String>,AMQPSeri
     sb.append(this.getLow()).append(FIELD_SEPERATOR);
     sb.append(this.getVol()).append(FIELD_SEPERATOR);
     sb.append(this.getVolume()).append(FIELD_SEPERATOR);
-    sb.append(this.getTimestamp()).append(FIELD_SEPERATOR);
+    sb.append(this.getTimestamp());
     return sb.toString();
   }
 
