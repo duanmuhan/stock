@@ -1,0 +1,14 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/websocket"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:websocket="http://www.springframework.org/schema/websocket"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/websocket
+        http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+
+    <websocket:handlers>
+        <context:mapping path="/quotesHandler" handler="quotesHandler"/>
+        <context:mapping path="/techHandler" handler="techHandler"/>
+    </websocket:handlers>
+</beans>
