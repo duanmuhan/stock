@@ -1,13 +1,11 @@
 package com.cgs.handler;
 
-import org.springframework.messaging.Message;
-import org.springframework.messaging.MessageHandler;
-import org.springframework.messaging.MessagingException;
+import javax.jms.MessageListener;
 
-public class TrendHandler implements MessageHandler {
+public class TrendHandler implements MessageListener {
 
   @Override
-  public void handleMessage(Message<?> message) throws MessagingException {
+  public void onMessage(javax.jms.Message message) {
 
   }
 }
