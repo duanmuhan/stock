@@ -6,20 +6,20 @@ import com.cgs.entity.model.RedisSerializer;
 /**
  * Created by Administrator on 2017/6/10.
  */
-public class Tick implements RedisSerializer<KEntity,String>,AMQPSerializer<String> {
+public class Tick implements RedisSerializer<Tick,String>,AMQPSerializer<Tick> {
 
   private static final String FIELD_SEPERATOR = ",";
 
-  private int stockId;
+  private String stockId;
   private double price;
   private long volume;
   private long timestamp;
 
-  public int getStockId() {
+  public String getStockId() {
     return stockId;
   }
 
-  public void setStockId(int stockId) {
+  public void setStockId(String stockId) {
     this.stockId = stockId;
   }
 
@@ -49,21 +49,43 @@ public class Tick implements RedisSerializer<KEntity,String>,AMQPSerializer<Stri
 
   @Override
   public String toRedisValue() {
-    return null;
+    StringBuilder sb = new StringBuilder();
+    sb.append(this.getStockId()).append(FIELD_SEPERATOR);
+    sb.append(this.getPrice()).append(FIELD_SEPERATOR);
+    sb.append(this.getVolume()).append(FIELD_SEPERATOR);
+    sb.append(this.getTimestamp()).append(FIELD_SEPERATOR);
+    return sb.toString();
   }
 
   @Override
-  public KEntity parseFromRedis(String string) {
-    return null;
+  public Tick parseFromRedis(String string) {
+    String[] array = string.split(FIELD_SEPERATOR);
+    Tick tick = new Tick();
+    tick.setStockId(array[0]);
+    tick.setPrice(Double.valueOf(array[1]));
+    tick.setVolume(Long.valueOf(array[2]));
+    tick.setTimestamp(Long.valueOf(array[3]));
+    return tick;
   }
 
   @Override
   public String toMessage() {
-    return null;
+    StringBuilder sb = new StringBuilder();
+    sb.append(this.getStockId()).append(FIELD_SEPERATOR);
+    sb.append(this.getPrice()).append(FIELD_SEPERATOR);
+    sb.append(this.getVolume()).append(FIELD_SEPERATOR);
+    sb.append(this.getTimestamp()).append(FIELD_SEPERATOR);
+    return sb.toString();
   }
 
   @Override
-  public String parseFromMessage(String string) {
-    return null;
+  public Tick parseFromMessage(String string) {
+    String[] array = string.split(FIELD_SEPERATOR);
+    Tick tick = new Tick();
+    tick.setStockId(array[0]);
+    tick.setPrice(Double.valueOf(array[1]));
+    tick.setVolume(Long.valueOf(array[2]));
+    tick.setTimestamp(Long.valueOf(array[3]));
+    return tick;
   }
 }
