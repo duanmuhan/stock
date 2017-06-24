@@ -1,7 +1,6 @@
 package com.cgs.service.graphs;
 
 import com.cgs.cache.TickCache;
-import com.cgs.entity.graphs.KEntity;
 import com.cgs.entity.graphs.MarketPrice;
 import com.cgs.service.graphs.interfaces.IHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +14,7 @@ public class TickService implements IHandler {
 
   @Override
   public void handle(MarketPrice marketPrice) {
-
+    tickCache.put(marketPrice);
   }
 
-  private KEntity parseMarketPriceToK(MarketPrice marketPrice){
-    KEntity kEntity = new KEntity();
-    return kEntity;
-  }
 }

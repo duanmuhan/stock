@@ -2,8 +2,6 @@ package com.cgs.dao;
 
 import com.cgs.entity.constant.redis.GraphsRedisKeys;
 import com.cgs.entity.graphs.KEntity;
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
@@ -18,9 +16,9 @@ public class KDao {
     redisTemplate.opsForList().leftPush(GraphsRedisKeys.kDataKey(entity),entity.toRedisValue());
   }
 
-  public List<KEntity> all(){
-    List<KEntity> entityList = new ArrayList<>();
-    return entityList;
+  public void update(KEntity entity){
+    redisTemplate.opsForList().leftPop(GraphsRedisKeys.kDataKey(entity));
+    redisTemplate.opsForList().leftPush(GraphsRedisKeys.kDataKey(entity),entity.toRedisValue());
   }
 
 }

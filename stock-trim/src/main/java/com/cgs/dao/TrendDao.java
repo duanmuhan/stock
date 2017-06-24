@@ -15,4 +15,8 @@ public class TrendDao {
   public void add(TrendMin trendMin){
     redisTemplate.opsForList().leftPush(GraphsRedisKeys.trendKey(trendMin),trendMin.toRedisValue());
   }
+
+  public void update(TrendMin trendMin){
+    redisTemplate.opsForList().leftPop(GraphsRedisKeys.trendKey(trendMin));
+  }
 }

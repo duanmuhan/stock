@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 public class TrendService implements IHandler {
 
   @Autowired
-  TrendCache trendCache;
+  private TrendCache trendCache;
 
   @Override
   public void handle(MarketPrice marketPrice) {
-
+    trendCache.put(marketPrice);
   }
 }

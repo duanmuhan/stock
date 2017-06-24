@@ -1,7 +1,6 @@
 package com.cgs.message;
 
 import com.alibaba.fastjson.JSON;
-import com.cgs.amqp.AMQPClient;
 import com.cgs.entity.graphs.MarketPrice;
 import com.cgs.entity.model.spider.MarketValue;
 import com.cgs.service.graphs.KService;
@@ -27,8 +26,6 @@ public class MarketValueHandler implements MessageListener {
   private TickService tickService;
   @Autowired
   private TrendService trendService;
-  @Autowired
-  private AMQPClient amqpClient;
 
   @Override
   public void onMessage(Message message) {
