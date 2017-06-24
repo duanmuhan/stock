@@ -55,12 +55,8 @@ public class KCache {
   }
 
   private void generateK(Map<KPeriod,KEntity> periodMap,MarketPrice marketPrice,KPeriod kPeriod){
-    if (ObjectUtils.isEmpty(periodMap)){
-      periodMap = new HashMap<>();
-      kMap.put(marketPrice.getStockId(),periodMap);
-    }else {
-      KEntity minK = periodMap.get(kPeriod);
-      if (ObjectUtils.isEmpty(minK)){
+    KEntity minK = periodMap.get(kPeriod);
+    if (ObjectUtils.isEmpty(minK)){
         minK = new KEntity();
         minK.setStockId(marketPrice.getStockId());
         minK.setOpen(marketPrice.getOpen());
@@ -70,8 +66,11 @@ public class KCache {
         minK.setPeriod(kPeriod);
         minK.setTimestamp(marketPrice.getTimestamp());
         periodMap.put(kPeriod,minK);
-      }else {
-        if (TimeUtil.isSamePeriod(minK.getTimestamp(),marketPrice.getTimestamp(),kPeriod)){
+    }else {
+      if (minK.getTimestamp() == marketPrice.getTimestamp()){
+          return;
+      }
+      if (TimeUtil.isSamePeriod(minK.getTimestamp(),marketPrice.getTimestamp(),kPeriod)){
           if (minK.getHigh() < marketPrice.getHigh()){
             minK.setHigh(marketPrice.getHigh());
           }
@@ -94,9 +93,7 @@ public class KCache {
           minK.setTimestamp(marketPrice.getTimestamp());
           periodMap.put(kPeriod,minK);
         }
+        amqpClient.sendMessage(kPeriod.name(),minK.toMessage());
       }
-      amqpClient.sendMessage(kPeriod.name(),minK.toMessage());
-    }
   }
-
 }

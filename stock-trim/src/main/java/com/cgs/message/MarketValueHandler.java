@@ -1,6 +1,7 @@
 package com.cgs.message;
 
 import com.alibaba.fastjson.JSON;
+import com.cgs.cache.MarketValueCache;
 import com.cgs.entity.graphs.MarketPrice;
 import com.cgs.entity.model.spider.MarketValue;
 import com.cgs.service.graphs.KService;
@@ -26,11 +27,16 @@ public class MarketValueHandler implements MessageListener {
   private TickService tickService;
   @Autowired
   private TrendService trendService;
+  @Autowired
+  MarketValueCache marketValueCache;
 
   @Override
   public void onMessage(Message message) {
     try {
       MarketPrice marketPrice = parseMarketValueToMarketPrice((TextMessage)message);
+      if (marketValueCache.exists(marketPrice) && marketValueCache.get(marketPrice).equals(marketPrice.toRedisValue())){
+        return;
+      }
       marketValueService.handle(marketPrice);
       kService.handle(marketPrice);
       tickService.handle(marketPrice);

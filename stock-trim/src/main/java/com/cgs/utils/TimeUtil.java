@@ -8,7 +8,7 @@ public class TimeUtil {
 
     private static boolean isSameMinute(long startTime,long currentTime){
         long timePeriod = currentTime - startTime;
-        if (timePeriod< Constant.MIN_PERIOD){
+        if (timePeriod != 0 && timePeriod< Constant.MIN_PERIOD){
             return true;
         }
         return false;
@@ -16,7 +16,7 @@ public class TimeUtil {
 
     private static boolean isSameFiveMinute(long startTime,long currentTime){
         long timePeriod = currentTime - startTime;
-        if (timePeriod<Constant.FIVE_MIN_PERIOD){
+        if ( timePeriod != 0 && timePeriod<Constant.FIVE_MIN_PERIOD){
             return true;
         }
         return false;
@@ -24,7 +24,7 @@ public class TimeUtil {
 
     private static boolean isFifteenMinute(long startTime,long currentTime){
         long timePeriod = currentTime - startTime;
-        if (timePeriod<Constant.FIFTEEN_MIN_PERIOD){
+        if (timePeriod != 0 && timePeriod<Constant.FIFTEEN_MIN_PERIOD){
             return true;
         }
         return false;
@@ -32,7 +32,7 @@ public class TimeUtil {
 
     private static boolean isHalfHour(long startTime,long currentTime){
         long timePeriod = currentTime - startTime;
-        if (timePeriod < Constant.HALF_HOUR_PERIOD){
+        if (timePeriod != 0 && timePeriod < Constant.HALF_HOUR_PERIOD){
             return true;
         }
         return false;
@@ -40,7 +40,7 @@ public class TimeUtil {
 
     private static boolean isHour(long startTime,long currentTime){
         long timePeriod = currentTime - startTime;
-        if (timePeriod < Constant.HOUR_PERIOD){
+        if (timePeriod != 0 && timePeriod < Constant.HOUR_PERIOD){
             return true;
         }
         return false;
