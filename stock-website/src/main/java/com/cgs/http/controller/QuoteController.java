@@ -23,4 +23,18 @@ public class QuoteController {
         modelAndView.setViewName(PageConstant.MAIN_PAGE);
         return modelAndView;
     }
+
+    @RequestMapping(value = API.CHART,method = RequestMethod.GET)
+    public ModelAndView chart(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName(PageConstant.CHART_PAGE);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = API.COMPANY_INFO,method = RequestMethod.GET)
+    public ModelAndView companyInfo(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName(PageConstant.COMPANY_INFO_PAGE);
+        return modelAndView;
+    }
 }

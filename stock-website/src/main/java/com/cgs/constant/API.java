@@ -5,4 +5,7 @@ package com.cgs.constant;
  */
 public interface API{
     String MAIN = "/index";
+    String CHART = "/chart";
+    String WIDGET = "/widget";
+    String COMPANY_INFO = "/company/info";
 }

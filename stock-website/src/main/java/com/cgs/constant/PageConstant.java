@@ -5,4 +5,7 @@ package com.cgs.constant;
  */
 public interface PageConstant {
     String MAIN_PAGE = "index";
+    String CHART_PAGE = "chart";
+    String WIDGET_PAGE = "widgets";
+    String COMPANY_INFO_PAGE = "company-info";
 }
