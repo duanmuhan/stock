@@ -37,4 +37,11 @@ public class QuoteController {
         modelAndView.setViewName(PageConstant.COMPANY_INFO_PAGE);
         return modelAndView;
     }
+
+    @RequestMapping(value = API.WIDGET,method = RequestMethod.GET)
+    public ModelAndView widget(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName(PageConstant.WIDGET_PAGE);
+        return modelAndView;
+    }
 }
