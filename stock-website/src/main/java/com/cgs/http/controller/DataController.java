@@ -1,6 +1,6 @@
 package com.cgs.http.controller;
 
-import com.cgs.service.CompanyService;
+import com.cgs.service.ValuableCompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class DataController {
+
     @Autowired
-    CompanyService companyService;
+    ValuableCompanyService companyService;
 
 }
