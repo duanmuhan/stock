@@ -3,9 +3,8 @@ package com.cgs.service;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by Administrator on 2017/6/25.
+ * Created by Administrator on 2017/7/3.
  */
 @Service
-public class CompanyService {
-
+public class TickService {
 }
