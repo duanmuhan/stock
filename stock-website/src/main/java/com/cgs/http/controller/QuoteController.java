@@ -114,6 +114,4 @@ public class QuoteController {
         modelAndView.setViewName(PageConstant.ICONS_SIMPLE_LINE_ICONS_PAGE);
         return modelAndView;
     }
-
-
 }
