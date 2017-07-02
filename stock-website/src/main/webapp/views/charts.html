@@ -202,7 +202,7 @@
                     <div class="card-columns cols-2">
                         <div class="card">
                             <div class="card-header">
-                                Line Chart
+                                Trend-Min
                                 <div class="card-actions">
                                     <a href="">
                                         <small class="text-muted">docs</small>
@@ -217,7 +217,7 @@
                         </div>
                         <div class="card">
                             <div class="card-header">
-                                Bar Chart
+                                TREND_5MIN
                                 <div class="card-actions">
                                     <a href="">
                                         <small class="text-muted">docs</small>
@@ -232,7 +232,7 @@
                         </div>
                         <div class="card">
                             <div class="card-header">
-                                Doughnut Chart
+                                K-5Min
                                 <div class="card-actions">
                                     <a href="">
                                         <small class="text-muted">docs</small>
@@ -247,7 +247,7 @@
                         </div>
                         <div class="card">
                             <div class="card-header">
-                                Radar Chart
+                                K-15MIN
                                 <div class="card-actions">
                                     <a href="">
                                         <small class="text-muted">docs</small>
@@ -262,7 +262,7 @@
                         </div>
                         <div class="card">
                             <div class="card-header">
-                                Pie Chart
+                                K-30MIN
                                 <div class="card-actions">
                                     <a href="">
                                         <small class="text-muted">docs</small>
@@ -277,7 +277,7 @@
                         </div>
                         <div class="card">
                             <div class="card-header">
-                                Polar Area Chart
+                                K-Hour
                                 <div class="card-actions">
                                     <a href="">
                                         <small class="text-muted">docs</small>
@@ -591,6 +591,7 @@
 Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://www.mycodes.net/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>    </footer>
 
     <!-- Bootstrap and necessary plugins -->
+    <script src="assets/js/libs/sockjs.min.js"></script>
 	<script src="assets/js/libs/jquery.min.js"></script>
 	<script src="assets/js/libs/tether.min.js"></script>
 	<script src="assets/js/libs/bootstrap.min.js"></script>
@@ -598,20 +599,9 @@ Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="
 	<!-- Plugins and scripts required by all views -->
 	<script src="assets/js/libs/Chart.min.js"></script>
 
-
-    <!-- GenesisUI main scripts -->
-
     <script src="js/app.js"></script>
-
-
-
-
-
-    <!-- Plugins and scripts required by this views -->
-
-    <!-- Custom scripts required by this view -->
     <script src="js/views/charts.js"></script>
-
+    <script src="js/websocket/socketjs.js"></script>
 </body>
 
 </html>
