@@ -18,4 +18,9 @@ public interface API{
     String COMPONENTS_TABS = "/components/tabs";
     String ICONS_FONT_AWESOME = "/icons/font/awesome";
     String ICONS_SIMPLE_LINE_ICONS = "/icons/simple/line/icons";
+
+    String K = "/k";
+    String TICK = "/tick";
+    String TREND_MIN = "/trend-min";
+    String TREND_5MIN = "/trend-5min";
 }
