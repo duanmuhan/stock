@@ -38,6 +38,12 @@
     <mvc:resources location="/resources/img/" mapping="/img/**"/>
     <mvc:resources location="/resources/assets/" mapping="/assets/**"/>
     <mvc:resources location="/resources/fonts/" mapping="/fonts/**"/>
+    <mvc:resources location="/resources/css/" mapping="/components/css/**" />
+    <mvc:resources location="/resources/js/" mapping="/components/js/**" />
+    <mvc:resources location="/resources/img/" mapping="/components/images/**" />
+    <mvc:resources location="/resources/img/" mapping="/components/img/**"/>
+    <mvc:resources location="/resources/assets/" mapping="/components/assets/**"/>
+    <mvc:resources location="/resources/fonts/" mapping="/components/fonts/**"/>
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="true">
             <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">

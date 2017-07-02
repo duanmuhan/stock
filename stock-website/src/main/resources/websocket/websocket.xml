@@ -8,8 +8,8 @@
         http://www.springframework.org/schema/websocket/spring-websocket.xsd">
 
     <websocket:handlers allowed-origins="http://localhost:8080">
-        <context:mapping path="/techhandler" handler="techHandler"/>
-        <context:mapping path="/quoteshandler" handler="quotesHandler"/>
+        <context:mapping path="/tech-handler" handler="techHandler"/>
+        <context:mapping path="/quotes-handler" handler="quotesHandler"/>
         <context:handshake-interceptors>
             <bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
         </context:handshake-interceptors>

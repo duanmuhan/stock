@@ -7,6 +7,7 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import java.net.URI;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -26,12 +27,20 @@ public class TechHandler extends TextWebSocketHandler {
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         sessionMap.put(session.getId(),session);
-        System.out.println("fuckyou established" + session.getId());
+        for (String key : sessionMap.keySet()){
+            TextMessage  webSocketMessage = new TextMessage("test");
+            sessionMap.get(key).sendMessage(webSocketMessage);
+            boolean isOpen = sessionMap.get(key).isOpen();
+            URI uri = session.getUri();
+            String path = uri.getPath();
+            long port = uri.getPort();
+            System.out.println(key);
+        }
     }
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-        System.out.println("closed");
+        sessionMap.remove(session.getId());
     }
 
     public Map<String,WebSocketSession> getSessionMap(){
