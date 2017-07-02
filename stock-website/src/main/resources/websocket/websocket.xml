@@ -7,7 +7,7 @@
         http://www.springframework.org/schema/websocket
         http://www.springframework.org/schema/websocket/spring-websocket.xsd">
 
-    <websocket:handlers>
+    <websocket:handlers allowed-origins="http://test.com">
         <context:mapping path="/quotesHandler" handler="quotesHandler"/>
         <context:mapping path="/techHandler" handler="techHandler"/>
     </websocket:handlers>

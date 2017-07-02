@@ -32,6 +32,12 @@
     <bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
         <property name="suffix" value=".html" />
     </bean>
+    <mvc:resources location="/resources/css/" mapping="/css/**" />
+    <mvc:resources location="/resources/js/" mapping="/js/**" />
+    <mvc:resources location="/resources/img/" mapping="/images/**" />
+    <mvc:resources location="/resources/img/" mapping="/img/**"/>
+    <mvc:resources location="/resources/assets/" mapping="/assets/**"/>
+    <mvc:resources location="/resources/fonts/" mapping="/fonts/**"/>
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="true">
             <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">

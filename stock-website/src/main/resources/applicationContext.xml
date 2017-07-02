@@ -18,5 +18,7 @@
         <property name="ignoreUnresolvablePlaceholders" value="true"/>
     </bean>
     <import resource="./mvc/mvc.xml"></import>
+    <import resource="./quartz/quartz.xml"></import>
+    <import resource="./redis/redis.xml"></import>
     <import resource="./websocket/websocket.xml"></import>
 </beans>

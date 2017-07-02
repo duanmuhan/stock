@@ -5,7 +5,17 @@ package com.cgs.constant;
  */
 public interface API{
     String MAIN = "/index";
-    String CHART = "/chart";
-    String WIDGET = "/widget";
+    String CHART = "/charts";
+    String WIDGET = "/widgets";
     String COMPANY_INFO = "/company/info";
+    String BLANK = "/blank";
+    String COMPONENTS_BUTTONS = "/components/buttons";
+    String COMPONENTS_FORMS = "/components/forms";
+    String COMPONENTS_MODALS = "/components/modals";
+    String COMPONENTS_SOCIAL_BUTTONS = "/components/social/buttons";
+    String COMPONENTS_SWITCHES = "/components/switches";
+    String COMPONENTS_TABLES = "/components/tables";
+    String COMPONENTS_TABS = "/components/tabs";
+    String ICONS_FONT_AWESOME = "/icons/font/awesome";
+    String ICONS_SIMPLE_LINE_ICONS = "/icons/simple/line/icons";
 }
