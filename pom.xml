@@ -34,7 +34,10 @@
         <spring-data-redis.version>1.8.3.RELEASE</spring-data-redis.version>
         <activemq-client.version>5.14.5</activemq-client.version>
         <guava.version>22.0</guava.version>
+        <jackson-core.version>2.4.0</jackson-core.version>
         <spring-security-config.version>4.2.2.RELEASE</spring-security-config.version>
+        <freemarker.version>2.3.22</freemarker.version>
+        <velocity.version>1.7</velocity.version>
     </properties>
     <dependencyManagement>
     <dependencies>
@@ -139,6 +142,31 @@
             <artifactId>servlet-api</artifactId>
             <version>${servlet-api.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-websocket</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>${freemarker.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>${velocity.version}</version>
+        </dependency>
     </dependencies>
     </dependencyManagement>
     <build>
@@ -169,25 +197,6 @@
                     </delimiters>
                     <useDefaultDelimiters>false</useDefaultDelimiters>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.6</version>
-                <configuration>
-                    <descriptors>
-                        <descriptor>assembly.xml</descriptor>
-                    </descriptors>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
