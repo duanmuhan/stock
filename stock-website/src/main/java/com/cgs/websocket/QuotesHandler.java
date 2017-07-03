@@ -1,15 +1,15 @@
 package com.cgs.websocket;
 
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.socket.*;
+import org.springframework.web.socket.BinaryMessage;
+import org.springframework.web.socket.CloseStatus;
+import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.BinaryWebSocketHandler;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Component
-@RequestMapping("/quotesHandler")
 public class QuotesHandler extends BinaryWebSocketHandler {
 
     private Map<String,WebSocketSession> sessionMap = new ConcurrentHashMap<>();
