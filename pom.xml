@@ -38,6 +38,7 @@
         <spring-security-config.version>4.2.2.RELEASE</spring-security-config.version>
         <freemarker.version>2.3.22</freemarker.version>
         <velocity.version>1.7</velocity.version>
+        <entity.version>1.0-SNAPSHOT</entity.version>
     </properties>
     <dependencyManagement>
     <dependencies>
@@ -166,6 +167,11 @@
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity</artifactId>
             <version>${velocity.version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>stock-entity</artifactId>
+            <groupId>com.cgs.stock</groupId>
+            <version>${entity.version}</version>
         </dependency>
     </dependencies>
     </dependencyManagement>
