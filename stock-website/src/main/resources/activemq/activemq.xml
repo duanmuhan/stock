@@ -14,10 +14,38 @@
         <property name="pubSubDomain" value="false"/>
     </bean>
 
+    <bean id="kListener" class="com.cgs.handler.KDataListener"></bean>
+    <bean id="sendResumeQueueDestination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg index="0" value="${jms.queue.trendMin},${jms.queue.trend5Min}" />
+    </bean>
+    <bean id="kDestination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg index="0" value="${jms.queue.trendMin},${jms.queue.trend5Min}" />
+    </bean>
     <bean class="org.springframework.jms.listener.SimpleMessageListenerContainer">
         <property name="connectionFactory" ref="connectionFactory"/>
         <property name="destinationName" value="${jms.queue.marketvalue}"/>
-        <property name="messageListener" ref="kHandler"/>
+        <property name="messageListener" ref="marketPriceListener"/>
+        <property name="concurrentConsumers" value="1"/>
+        <property name="sessionTransacted" value="true"/>
+    </bean>
+    <bean class="org.springframework.jms.listener.SimpleMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destinationName" value="${jms.queue.tick}"/>
+        <property name="messageListener" ref="tickHandler"/>
+        <property name="concurrentConsumers" value="1"/>
+        <property name="sessionTransacted" value="true"/>
+    </bean>
+    <bean class="org.springframework.jms.listener.SimpleMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destination" ref="sendResumeQueueDestination"/>
+        <property name="messageListener" ref="trendHandler"/>
+        <property name="concurrentConsumers" value="1"/>
+        <property name="sessionTransacted" value="true"/>
+    </bean>
+    <bean class="org.springframework.jms.listener.SimpleMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destinationName" value="${jms.queue.kmin}"/>
+        <property name="messageListener" ref="kListener"/>
         <property name="concurrentConsumers" value="1"/>
         <property name="sessionTransacted" value="true"/>
     </bean>
