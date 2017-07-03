@@ -1,6 +1,5 @@
 package com.cgs.handler;
 
-
 import org.springframework.stereotype.Component;
 
 import javax.jms.Message;
@@ -11,6 +10,6 @@ public class MarketPriceListener implements MessageListener {
 
   @Override
   public void onMessage(Message message) {
-
+    System.out.println("asshole");
   }
 }

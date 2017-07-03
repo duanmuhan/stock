@@ -9,6 +9,6 @@ public class TrendHandler implements MessageListener {
 
   @Override
   public void onMessage(javax.jms.Message message) {
-
+    System.out.println("Asshole");
   }
 }
