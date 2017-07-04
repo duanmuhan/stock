@@ -27,6 +27,6 @@ public class TickCache {
     tick.setTimestamp(marketPrice.getTimestamp());
     tick.setVolume(marketPrice.getVol());
     tickDao.add(tick);
-    amqpClient.sendMessage(ActiveMQKeys.TICK.name(),tick.toMessage());
+    amqpClient.sendMessage(ActiveMQKeys.TICK.getContext(),tick.toMessage());
   }
 }

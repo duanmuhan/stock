@@ -72,6 +72,6 @@ public class TrendCache {
         trendMin.setTime(marketPrice.getTimestamp());
       }
     }
-    amqpClient.sendMessage(trendMin.getTrendPeriod().name(),trendMin.toMessage());
+    amqpClient.sendMessage(trendMin.getTrendPeriod().getValue(),trendMin.toMessage());
   }
 }

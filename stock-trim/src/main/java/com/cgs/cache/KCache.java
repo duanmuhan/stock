@@ -93,7 +93,7 @@ public class KCache {
           minK.setTimestamp(marketPrice.getTimestamp());
           periodMap.put(kPeriod,minK);
         }
-        amqpClient.sendMessage(kPeriod.name(),minK.toMessage());
+        amqpClient.sendMessage(kPeriod.getValue(),minK.toMessage());
       }
   }
 }
