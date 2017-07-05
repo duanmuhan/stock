@@ -30,6 +30,7 @@ public class QuotesHandler extends BinaryWebSocketHandler {
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+        System.out.println("closed");
         sessionMap.remove(session.getId());
     }
 

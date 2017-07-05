@@ -7,18 +7,18 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-import java.net.URI;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Component
-@RequestMapping("/techHandler")
+@RequestMapping("/tech-handler")
 public class TechHandler extends TextWebSocketHandler {
 
     private Map<String,WebSocketSession> sessionMap = new ConcurrentHashMap<>();
 
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+        System.out.println(message.toString());
         if (session.isOpen()){
             System.out.println("fuckyou");
         }
@@ -27,19 +27,13 @@ public class TechHandler extends TextWebSocketHandler {
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         sessionMap.put(session.getId(),session);
-        for (String key : sessionMap.keySet()){
-            TextMessage  webSocketMessage = new TextMessage("test");
-            sessionMap.get(key).sendMessage(webSocketMessage);
-            boolean isOpen = sessionMap.get(key).isOpen();
-            URI uri = session.getUri();
-            String path = uri.getPath();
-            long port = uri.getPort();
-            System.out.println(key);
-        }
+        TextMessage  webSocketMessage = new TextMessage("test");
+        session.sendMessage(webSocketMessage);
     }
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+        System.out.println("closed");
         sessionMap.remove(session.getId());
     }
 
