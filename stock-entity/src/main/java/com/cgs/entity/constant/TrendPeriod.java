@@ -2,8 +2,8 @@ package com.cgs.entity.constant;
 
 public enum TrendPeriod {
 
-  MIN("min"),
-  FIVE_MIN("5min");
+  MIN("trendMin"),
+  FIVE_MIN("trend5min");
 
   private String value;
 

@@ -17,15 +17,32 @@ public class GraphsRedisKeys {
     return K_PREFIX + kEntity.getPeriod().getValue() + ":" + kEntity.getStockId();
   }
 
+  public static String kDataKey(String stockId,String period){
+    return K_PREFIX + period + ":" + stockId;
+  }
+
   public static String trendKey(TrendMin trendMin){
     return TREND_PREFIX + trendMin.getTrendPeriod().getValue() + ":" + trendMin.getStockId();
+  }
+
+  public static String trendKey(String stockId,String period){
+    return TREND_PREFIX + period + ":" + stockId;
   }
 
   public static String marketValueKey(MarketPrice marketPrice){
     return MARKET_PREFIX + marketPrice.getStockId();
   }
 
+  public static String marketValueKey(String stockId){
+    return MARKET_PREFIX + stockId;
+  }
+
   public static String tickKey(Tick tick){
     return TICK_PREFIX + tick.getStockId();
   }
+
+  public static String tickKey(String stockId){
+    return TICK_PREFIX + stockId;
+  }
+
 }
