@@ -12,4 +12,5 @@ public class MarketPriceDao {
 
     @Autowired
     private RedisTemplate<String,String> redisTemplate;
+
 }

@@ -13,6 +13,10 @@ import java.util.concurrent.ConcurrentHashMap;
 public class QuotesHandler extends BinaryWebSocketHandler {
 
     private Map<String,WebSocketSession> sessionMap = new ConcurrentHashMap<>();
+    private Map<String,WebSocketSession> trendMap = new ConcurrentHashMap<>();
+    private Map<String,WebSocketSession> kMap = new ConcurrentHashMap<>();
+    private Map<String,WebSocketSession> marketPriceMap = new ConcurrentHashMap<>();
+    private Map<String,WebSocketSession> tickMap = new ConcurrentHashMap<>();
 
     @Override
     protected void handleBinaryMessage(WebSocketSession session, BinaryMessage message) throws Exception {
@@ -30,11 +34,26 @@ public class QuotesHandler extends BinaryWebSocketHandler {
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-        System.out.println("closed");
         sessionMap.remove(session.getId());
     }
 
     public Map<String,WebSocketSession> getSessionMap(){
         return sessionMap;
+    }
+
+    public Map<String, WebSocketSession> getTrendMap() {
+        return trendMap;
+    }
+
+    public Map<String, WebSocketSession> getkMap() {
+        return kMap;
+    }
+
+    public Map<String, WebSocketSession> getMarketPriceMap() {
+        return marketPriceMap;
+    }
+
+    public Map<String, WebSocketSession> getTickMap() {
+        return tickMap;
     }
 }

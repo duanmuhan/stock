@@ -7,13 +7,12 @@
         http://www.springframework.org/schema/websocket
         http://www.springframework.org/schema/websocket/spring-websocket.xsd">
 
-    <websocket:handlers allowed-origins="http://localhost:8080">
+    <websocket:handlers allowed-origins="ws//localhost:8080">
         <context:mapping path="/tech-handler" handler="techHandler"/>
         <context:mapping path="/quotes-handler" handler="quotesHandler"/>
         <context:handshake-interceptors>
-            <bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+            <bean class="com.cgs.websocket.interceptor.WebsocketInterceptor"/>
         </context:handshake-interceptors>
-        <context:sockjs/>
     </websocket:handlers>
 
     <bean class="org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean">

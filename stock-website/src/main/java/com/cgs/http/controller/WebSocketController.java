@@ -34,13 +34,6 @@ public class WebSocketController {
         return trendMinList;
     }
 
-    @MessageMapping(API.TREND_5MIN)
-    @ResponseBody
-    public List<TrendMin> trend5Min(TrendRequest trendRequest){
-        List<TrendMin> trendMinList = new ArrayList<>();
-        return trendMinList;
-    }
-
     @MessageMapping(API.TICK)
     @ResponseBody
     public List<Tick> tick(TickRequest tickRequest){

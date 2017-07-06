@@ -22,5 +22,5 @@ public interface API{
     String K = "/k";
     String TICK = "/tick";
     String TREND_MIN = "/trend-min";
-    String TREND_5MIN = "/trend-5min";
+    String MARKET_PRICE = "/market-price";
 }
