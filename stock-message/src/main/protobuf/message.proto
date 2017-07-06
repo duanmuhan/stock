@@ -1,0 +1,113 @@
+syntax = "proto3";
+package quotes;
+option java_package = "com.cgs.quotes.message";
+option java_outer_classname = "QuotesMessage";
+
+message MarketPriceRequest{
+    repeated string stock_ids = 1;
+    Action action = 2;
+}
+
+message MarketPriceResponse{
+    string code = 1;
+    int64 server_time = 2;
+    repeated MarketPriceItem items = 3;
+}
+
+message MarketPriceItem{
+    string stock_id = 1;
+    double open = 2;
+    double close = 3;
+    double high = 4;
+    double low = 5;
+    double price = 6;
+    int64 vol = 7;
+    double volume = 8;
+    int64 timestamp = 9;
+}
+
+message KRequest{
+    Action action = 1;
+    string stock_id = 2;
+    KPeriod k_period = 3;
+}
+
+message KResponse{
+    string code = 1;
+    string stock_id = 2;
+    KPeriod period = 3;
+    int64 server_time = 4;
+    repeated KItem items = 5;
+}
+
+message KItem{
+    double high = 3;
+    double low = 4;
+    double open = 5;
+    double close = 6;
+    int64 volume = 7;
+    int64 timestamp = 8;
+}
+
+message TickRequest{
+    Action action = 1;
+    string stock_id = 2;
+}
+
+message TickResponse{
+    string code = 1;
+    string stock_id = 2;
+    int64 server_time = 3;
+    repeated TickItem items = 4;
+}
+
+message TickItem{
+    double price = 2;
+    int64 volume = 3;
+    int64 timestamp = 4;
+}
+
+message TrendRequest{
+    Action action = 1;
+    TrendPeriod period = 2;
+    string stock_id = 3;
+}
+
+message TrendResponse{
+    TrendPeriod period = 1;
+    string stock_id = 2;
+    repeated TrendItem items = 3;
+}
+
+message TrendItem{
+    double close = 1;
+    double vwap = 2;
+    int64 volume = 3;
+    int64 time = 4;
+}
+
+enum Action {
+    //全量更新
+    FT_ALL = 0;
+    //增加订阅
+    FT_ADD = 1;
+    //删除订阅
+    FT_DELETE = 2;
+}
+
+enum KPeriod {
+    DAY = 0;
+    WEEK = 1;
+    MONTH = 2;
+    YEAR = 3;
+    MIN = 4;
+    FIVE_MIN = 5;
+    FIFTEEN_MIN = 6;
+    THIRTY_MIN = 7;
+    SIXTY_MIN = 8;
+}
+
+enum TrendPeriod{
+    TREND_MIN = 0;
+    TREND_FIVE_MIN = 1;
+}
