@@ -2,10 +2,12 @@ package com.cgs.utils;
 
 import com.cgs.constant.MessageCodeConstants;
 import com.cgs.entity.base.Message;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by Administrator on 2017/7/5.
  */
+@Component
 public class MessageGenerator {
 
     public enum MessageCode {

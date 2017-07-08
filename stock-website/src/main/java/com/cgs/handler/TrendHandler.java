@@ -1,14 +1,13 @@
 package com.cgs.handler;
 
-import com.alibaba.fastjson.JSON;
 import com.cgs.entity.graphs.TrendMin;
 import com.cgs.quotes.message.QuotesMessage;
 import com.cgs.websocket.QuotesHandler;
+import com.cgs.websocket.entity.WebSocketSessionEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.BinaryMessage;
 import org.springframework.web.socket.WebSocketMessage;
-import org.springframework.web.socket.WebSocketSession;
 
 import javax.jms.JMSException;
 import javax.jms.MessageListener;
@@ -23,12 +22,12 @@ public class TrendHandler implements MessageListener {
 
     @Override
     public void onMessage(javax.jms.Message message) {
-        Map<String, WebSocketSession> sessionMap = quotesHandler.getSessionMap();
+        Map<String, WebSocketSessionEntity> sessionMap = quotesHandler.getSessionMap();
         try {
             QuotesMessage.TrendResponse response = parseTrend((TextMessage) message);
             WebSocketMessage webSocketMessage = new BinaryMessage(response.toByteArray());
             for (String key : sessionMap.keySet()) {
-                sessionMap.get(key).sendMessage(webSocketMessage);
+                sessionMap.get(key).send(webSocketMessage);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,8 +36,9 @@ public class TrendHandler implements MessageListener {
 
     private QuotesMessage.TrendResponse parseTrend(TextMessage message) throws JMSException {
         QuotesMessage.TrendResponse.Builder builder = QuotesMessage.TrendResponse.newBuilder();
-        TrendMin trendMin = JSON.parseObject(message.getText(), TrendMin.class);
-
+        String text = message.getText();
+        TrendMin trendMin = new TrendMin();
+        trendMin = trendMin.parseFromMessage(text);
         QuotesMessage.TrendItem.Builder itemBuilder = QuotesMessage.TrendItem.newBuilder();
         itemBuilder.setClose(trendMin.getClose());
         itemBuilder.setTime(trendMin.getTime());
