@@ -11,6 +11,7 @@
     <modules>
         <module>stock-trim</module>
         <module>stock-entity</module>
+        <module>stock-message</module>
         <module>stock-website</module>
     </modules>
     <properties>
@@ -39,6 +40,12 @@
         <freemarker.version>2.3.22</freemarker.version>
         <velocity.version>1.7</velocity.version>
         <entity.version>1.0-SNAPSHOT</entity.version>
+        <websocket.version>1.1</websocket.version>
+        <protobuf.version>3.3.1</protobuf.version>
+        <junit.version>4.10</junit.version>
+        <logback.version>1.1.7</logback.version>
+        <log4j-over-slf4j.version>1.7.12</log4j-over-slf4j.version>
+        <slf4j.version>1.7.24</slf4j.version>
     </properties>
     <dependencyManagement>
     <dependencies>
@@ -97,6 +104,12 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-redis</artifactId>
             <version>${spring-data-redis.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -122,6 +135,12 @@
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-client</artifactId>
             <version>${activemq-client.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -169,10 +188,54 @@
             <version>${velocity.version}</version>
         </dependency>
         <dependency>
+            <groupId>javax.websocket</groupId>
+            <artifactId>javax.websocket-api</artifactId>
+            <version>${websocket.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>${protobuf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+            <version>${log4j-over-slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
+
+        <dependency>
             <artifactId>stock-entity</artifactId>
             <groupId>com.cgs.stock</groupId>
             <version>${entity.version}</version>
         </dependency>
+        <dependency>
+            <artifactId>stock-message</artifactId>
+            <groupId>com.cgs.stock</groupId>
+            <version>${entity.version}</version>
+        </dependency>
+
     </dependencies>
     </dependencyManagement>
     <build>

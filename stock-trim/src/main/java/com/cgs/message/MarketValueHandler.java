@@ -34,9 +34,9 @@ public class MarketValueHandler implements MessageListener {
   public void onMessage(Message message) {
     try {
       MarketPrice marketPrice = parseMarketValueToMarketPrice((TextMessage)message);
-      if (marketValueCache.exists(marketPrice) && marketValueCache.get(marketPrice).equals(marketPrice.toRedisValue())){
-        return;
-      }
+//      if (marketValueCache.exists(marketPrice) && marketValueCache.get(marketPrice).equals(marketPrice.toRedisValue())){
+//        return;
+//      }
       marketValueService.handle(marketPrice);
       kService.handle(marketPrice);
       tickService.handle(marketPrice);

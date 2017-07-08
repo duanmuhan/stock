@@ -1,5 +1,5 @@
 $(function () {
-    var socket = new WebSocket('ws://localhost:8080/tech-handler');
+    var socket = new WebSocket('ws://localhost:8080/quotes-handler');
     socket.onopen = function () {
         console.log("open");
         socket.send('I am the client and I\'m listening!');
@@ -25,7 +25,7 @@ $(function () {
         if (socket != null){
             socket.close();
         }
-        socket = new SockJS('http://localhost:8080/tech-handler',1000);
+        socket = new WebSocket('ws://localhost:8080/quotes-handler');
     };
 
     var timeout = 60000;

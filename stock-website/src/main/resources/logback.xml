@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+
+    <contextName>FlyingTiger</contextName>
+
+    <property name="LOG_HOME" value="${log.home}"/>
+    <property name="NORMAL_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
+
+    <appender name="ConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${NORMAL_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="RuntimeAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_HOME}/runtime.log</File>
+        <encoder>
+            <pattern>${NORMAL_PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/runtime.%i.log</fileNamePattern>
+            <MinIndex>1</MinIndex>
+            <MaxIndex>3</MaxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>20MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
+
+    <appender name="ErrorAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_HOME}/error.log</File>
+        <encoder>
+            <pattern>${NORMAL_PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/error.%i.log</fileNamePattern>
+            <MinIndex>1</MinIndex>
+            <MaxIndex>3</MaxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>20MB</MaxFileSize>
+        </triggeringPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="MarketPriceFakeAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_HOME}/market_price_fake.log</File>
+        <encoder>
+            <pattern>${NORMAL_PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/market_price_fake.%i.log</fileNamePattern>
+            <MinIndex>1</MinIndex>
+            <MaxIndex>3</MaxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>20MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
+
+    <appender name="RPCContractAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_HOME}/rpc_contract.log</File>
+        <encoder>
+            <pattern>${NORMAL_PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/rpc_contract.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="TCPMessageAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_HOME}/tcp_message.log</File>
+        <encoder>
+            <pattern>${NORMAL_PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/tcp_message.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="PerformanceAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_HOME}/performance.log</File>
+        <encoder>
+            <pattern>${NORMAL_PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/performance.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="QueueAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_HOME}/queue.log</File>
+        <encoder>
+            <pattern>${NORMAL_PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/queue.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <logger name="TCPMessage" additivity="false">
+        <appender-ref ref="RuntimeAppender"/>
+        <appender-ref ref="TCPMessageAppender"/>
+    </logger>
+
+    <logger name="MarketPriceFake" additivity="false">
+        <appender-ref ref="MarketPriceFakeAppender"/>
+    </logger>
+
+    <logger name="RPCContract" additivity="false">
+        <appender-ref ref="ConsoleAppender"/>
+        <appender-ref ref="RuntimeAppender"/>
+        <appender-ref ref="RPCContractAppender"/>
+    </logger>
+
+    <logger name="Performance" additivity="false">
+        <appender-ref ref="PerformanceAppender"/>
+    </logger>
+
+    <logger name="Queue" additivity="false">
+        <appender-ref ref="QueueAppender"/>
+    </logger>
+
+    <root level="debug" additivity="false">
+        <appender-ref ref="ConsoleAppender"/>
+        <appender-ref ref="RuntimeAppender"/>
+        <appender-ref ref="ErrorAppender"/>
+    </root>
+
+</configuration>
